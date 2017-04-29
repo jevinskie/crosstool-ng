@@ -10,7 +10,7 @@
 ## help Feature-rich, but large...  Most useful for desktop-like systems.
 
 config THREADS
-    default "nptl"
+    default "linuxthreads"
 
 config LIBC_GLIBC_CUSTOM
     bool
@@ -75,6 +75,10 @@ choice
     prompt "glibc version"
 # Don't remove next line
 # CT_INSERT_VERSION_BELOW
+
+config LIBC_GLIBC_V_2_3_6
+    bool
+    prompt "2.3.6"
 
 config LIBC_GLIBC_V_2_25
     bool
@@ -201,6 +205,7 @@ config LIBC_VERSION
     string
 # Don't remove next line
 # CT_INSERT_VERSION_STRING_BELOW
+    default "2.3.6" if LIBC_GLIBC_V_2_3_6
     default "2.25" if LIBC_GLIBC_V_2_25
     default "2.24" if LIBC_GLIBC_V_2_24
     default "2.23" if LIBC_GLIBC_V_2_23

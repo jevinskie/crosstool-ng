@@ -59,8 +59,7 @@ do_gcc_extract() {
 cc_gcc_lang_list() {
     local lang_list
 
-    lang_list="c"
-    [ "${CT_CC_LANG_CXX}" = "y"      ] && lang_list+=",c++"
+    lang_list="c,c++"
     [ "${CT_CC_LANG_FORTRAN}" = "y"  ] && lang_list+=",fortran"
     [ "${CT_CC_LANG_ADA}" = "y"      ] && lang_list+=",ada"
     [ "${CT_CC_LANG_JAVA}" = "y"     ] && lang_list+=",java"
@@ -218,7 +217,7 @@ do_gcc_core_pass_1() {
     core_opts+=( "prefix=${CT_BUILDTOOLS_PREFIX_DIR}" )
     core_opts+=( "cflags=${CT_CFLAGS_FOR_BUILD}" )
     core_opts+=( "ldflags=${CT_LDFLAGS_FOR_BUILD}" )
-    core_opts+=( "lang_list=c" )
+    core_opts+=( "lang_list=c,c++" )
     core_opts+=( "build_step=core1" )
 
     CT_DoStep INFO "Installing pass-1 core C gcc compiler"
@@ -244,7 +243,7 @@ do_gcc_core_pass_2() {
     core_opts+=( "complibs=${CT_BUILDTOOLS_PREFIX_DIR}" )
     core_opts+=( "cflags=${CT_CFLAGS_FOR_BUILD}" )
     core_opts+=( "ldflags=${CT_LDFLAGS_FOR_BUILD}" )
-    core_opts+=( "lang_list=c" )
+    core_opts+=( "lang_list=c,c++" )
     core_opts+=( "build_step=core2" )
 
     # Different conditions are at stake here:

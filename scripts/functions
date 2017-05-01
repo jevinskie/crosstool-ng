@@ -625,10 +625,10 @@ CT_SetLibPath() {
 # Build up the list of allowed tarball extensions
 # Add them in the prefered order; most preferred comes first
 CT_DoListTarballExt() {
-    printf ".tar.xz\n"
-    printf ".tar.lzma\n"
     printf ".tar.bz2\n"
     printf ".tar.gz\n.tgz\n"
+    printf ".tar.xz\n"
+    printf ".tar.lzma\n"
     printf ".tar\n"
     printf ".zip\n"
 }

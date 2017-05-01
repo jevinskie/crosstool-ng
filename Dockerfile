@@ -59,6 +59,7 @@ RUN mkdir -p ${SRC_DIR} ${CCACHE_DIR} \
  && git clone https://github.com/jevinskie/oh-my-zsh .oh-my-zsh \
  && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
  && touch ~/.my_rc              \
+ && chsh -s /bin/zsh            \
  && git clone -b jevmaster https://github.com/jevinskie/crosstool-ng ${SRC_DIR}
 
 WORKDIR ${SRC_DIR}

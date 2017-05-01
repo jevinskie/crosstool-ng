@@ -2,4 +2,4 @@
 
 docker build -t ctng .
 
-docker run --rm -v $(PWD)/:/usr/src/ctng -it ctng bash
+docker run -v $(PWD)/:/usr/src/ctng -it ctng

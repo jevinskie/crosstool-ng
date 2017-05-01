@@ -14,7 +14,7 @@ do_binutils_get() {
                 ;;
             *)
                 CT_GetFile "binutils-${CT_BINUTILS_VERSION}"                                        \
-                           {http,ftp}://{ftp.gnu.org/gnu,ftp.kernel.org/pub/linux/devel}/binutils   \
+                           {http,ftp}://{mirrors.kernel.org/gnu,ftp.gnu.org/gnu,ftp.kernel.org/pub/linux/devel}/binutils   \
                            ftp://{sourceware.org,gcc.gnu.org}/pub/binutils/{releases,snapshots}
                 ;;
         esac

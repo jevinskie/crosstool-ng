@@ -16,21 +16,16 @@ RUN apt update                   \
     bison                        \
     build-essential              \
     ccache                       \
-    clang                        \
     nano                         \
     file                         \
     flex                         \
     gawk                         \
     gcc                          \
     g++                          \
-    gcc-6                        \
-    g++-6                        \
     gperf                        \
     gdb                          \
     git                          \
     help2man                     \
-    lldb                         \
-    llvm                         \
     libncurses-dev               \
     libssl-dev                   \
     pkg-config                   \
@@ -42,7 +37,17 @@ RUN apt update                   \
 
 # Fetch the kernel
 ENV CCACHE_DIR=/ccache          \
+    CCACHE_MAXSIZE=16G          \
     SRC_DIR=/usr/src/ctng
 RUN mkdir -p ${SRC_DIR} ${CCACHE_DIR} \
- && cd ${SRC_DIR}
+ && cd /usr/local/bin           \
+ && ln -s /usr/bin/ccache cc    \
+ && ln -s /usr/bin/ccache c++   \
+ && ln -s /usr/bin/ccache gcc   \
+ && ln -s /usr/bin/ccache g++   \
+ && cd ${SRC_DIR}               \
+ && ./configure                 \
+ && make install                \
+ && ct-ng oldconfig             \
+ && ct-ng sources
 WORKDIR ${SRC_DIR}

@@ -41,15 +41,14 @@ RUN apt update                   \
     zsh                          \
  && apt-get clean
 
-SHELL ["/bin/zsh", "-c"]
-
-# Fetch the kernel
 ENV CCACHE_DIR=/ccache          \
     CCACHE_MAXSIZE=16G          \
     PATH=${PATH}:/tmp/ctng/dotbuild/mipsel-unknown-linux-gnu/build/build-libc-startfiles/multilib \
-    SRC_DIR=/usr/src/ctng
+    SRC_DIR=/usr/src/ctng       \
+    WORK_DIR=/tmp/ctng/dotbuild \
+    CT_PREFIX=/opt/x-tools
 
-RUN mkdir -p ${SRC_DIR} ${CCACHE_DIR} \
+RUN mkdir -p ${SRC_DIR} ${CCACHE_DIR} ${WORK_DIR} ${CT_PREFIX} \
  && cd /usr/local/bin           \
  && ln -s /usr/bin/ccache cc    \
  && ln -s /usr/bin/ccache c++   \
@@ -69,5 +68,3 @@ ADD mah-config ${SRC_DIR}/.config
 RUN ./bootstrap             \
  && ./configure             \
  && make install
-
-# RUN ct-ng oldconfig

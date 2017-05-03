@@ -34,6 +34,7 @@ RUN apt update                   \
     libncurses-dev               \
     libssl-dev                   \
     pkg-config                   \
+    silversearcher-ag            \
     texinfo                      \
     vim                          \
     wget                         \
@@ -58,7 +59,7 @@ RUN mkdir -p ${SRC_DIR} ${CCACHE_DIR} ${WORK_DIR} ${CT_PREFIX} \
  && git clone https://github.com/jevinskie/oh-my-zsh .oh-my-zsh \
  && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
  && touch ~/.my_rc              \
- && chsh -s /bin/zsh            \
+ && chsh -s /usr.bin/zsh        \
  && git clone -b jevmaster https://github.com/jevinskie/crosstool-ng ${SRC_DIR}
 
 WORKDIR ${SRC_DIR}
@@ -68,3 +69,5 @@ ADD mah-config ${SRC_DIR}/.config
 RUN ./bootstrap             \
  && ./configure             \
  && make install
+
+CMD ["zsh"]

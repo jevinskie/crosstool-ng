@@ -126,7 +126,7 @@ CT_ARCH_SUFFIX=""
 # Generic target options
 #
 # CT_MULTILIB is not set
-CT_DEMULTILIB=y
+# CT_DEMULTILIB is not set
 CT_ARCH_USE_MMU=y
 CT_ARCH_SUPPORTS_BOTH_ENDIAN=y
 CT_ARCH_DEFAULT_BE=y
@@ -168,9 +168,7 @@ CT_ARCH_mips_ABI="32"
 #
 # General toolchain options
 #
-CT_USE_SYSROOT=y
-CT_SYSROOT_NAME="sysroot"
-CT_SYSROOT_DIR_PREFIX=""
+# CT_USE_SYSROOT is not set
 CT_WANTS_STATIC_LINK=y
 CT_WANTS_STATIC_LINK_CXX=y
 # CT_STATIC_TOOLCHAIN is not set
